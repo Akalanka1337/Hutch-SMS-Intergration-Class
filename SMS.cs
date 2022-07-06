@@ -45,6 +45,7 @@ namespace CYBERSCAP.Functions
 
                 var response = await wb.PostAsync("/api/sendsms", final);
                 string hook = response.Content.ReadAsStringAsync().Result;
+                //string hook = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 dynamic readData = JObject.Parse(hook);
                 if ((int)response.StatusCode == 200 && readData.serverRef != null)
                 {
